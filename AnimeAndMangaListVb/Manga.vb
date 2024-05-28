@@ -198,4 +198,38 @@ Friend Class Manga
             Next
         End Using
     End Sub
+
+    Public Shared Sub LoadMangaDataFromTextFile(filePath As String, mangas As Manga(), lstvData As ListView)
+        Try
+            Dim lines = File.ReadAllLines(filePath)
+
+            For Each line In lines
+                Dim fields = line.Split("|"c)
+
+                Dim emptyIndex = Array.FindIndex(mangas, Function(m) m Is Nothing)
+
+                If emptyIndex = -1 Then
+                    MessageBox.Show("The array is full. You need to delete some entries to add new ones.", "Array Full", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
+
+                mangas(emptyIndex) = New Manga(fields(0), fields(1), fields(2), Date.Parse(fields(3)), Convert.ToInt32(fields(4)), fields(5), Convert.ToInt32(fields(6)), Convert.ToDouble(fields(7)))
+
+                Dim item As ListViewItem = New ListViewItem(mangas(emptyIndex).Title)
+                item.SubItems.Add(mangas(emptyIndex).Author)
+                item.SubItems.Add(mangas(emptyIndex).Genre)
+                item.SubItems.Add(mangas(emptyIndex).ReleaseYear.ToShortDateString())
+                item.SubItems.Add(mangas(emptyIndex).Volume.ToString())
+                item.SubItems.Add(mangas(emptyIndex).Editorial)
+                item.SubItems.Add(mangas(emptyIndex).Rating.ToString())
+
+                lstvData.Items.Add(item)
+            Next
+
+            MessageBox.Show("Data loaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while loading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])
+        End Try
+    End Sub
+
 End Class

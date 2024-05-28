@@ -217,4 +217,46 @@ Friend Class Anime
             Next
         End Using
     End Sub
+
+    Public Shared Sub LoadAnimeDataFromTextFile(filePath As String, animeMatriz As Anime(,), lstvData As ListView)
+        Dim row, column As Integer
+        Try
+            Dim lines = File.ReadAllLines(filePath)
+
+            row = 0
+            column = 0
+            For Each line In lines
+                Dim fields = line.Split("|"c)
+
+                If row >= animeMatriz.GetLength(0) OrElse column >= animeMatriz.GetLength(1) Then
+                    MessageBox.Show("The matrix is full. You need to delete some entries to add new ones.", "Matrix Full", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
+
+                animeMatriz(row, column) = New Anime(fields(0), fields(1), fields(2), Date.Parse(fields(3)), Convert.ToInt32(fields(4)), fields(5), fields(6), Convert.ToInt32(fields(7)))
+
+                Dim item As ListViewItem = New ListViewItem(animeMatriz(row, column).Title)
+                item.SubItems.Add(animeMatriz(row, column).Author)
+                item.SubItems.Add(animeMatriz(row, column).Genre)
+                item.SubItems.Add(animeMatriz(row, column).ReleaseYear.ToShortDateString())
+                item.SubItems.Add(animeMatriz(row, column).NumberOfSeasons.ToString())
+                item.SubItems.Add(animeMatriz(row, column).ProductionStudio)
+                item.SubItems.Add(animeMatriz(row, column).Platform.ToString())
+                item.SubItems.Add(animeMatriz(row, column).Rating.ToString())
+
+                lstvData.Items.Add(item)
+
+                column += 1
+                If column >= animeMatriz.GetLength(1) Then
+                    row += 1
+                    column = 0
+                End If
+            Next
+
+            MessageBox.Show("Data loaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while loading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])
+        End Try
+    End Sub
+
 End Class
