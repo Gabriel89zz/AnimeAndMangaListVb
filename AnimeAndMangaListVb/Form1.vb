@@ -294,7 +294,7 @@ Partial Public Class Form1
     Private Sub btnExport_Click(sender As Object, e As EventArgs)
         If btnAddAnime.Visible = True Then
             Using sfd As SaveFileDialog = New SaveFileDialog()
-                sfd.Filter = "JSON Files|*.json|XML Files|*.xml|Excel Files|*.xlsx|Word Files|*.docx|PDF Files|*.pdf|Text Files|*.txt"
+                sfd.Filter = "JSON Files|*.json|XML Files|*.xml|Excel Files|*.xlsx|Word Files|*.docx|Text Files|*.txt"
                 sfd.Title = "Save an Export File"
                 sfd.FileName = "ExportedData"
 
@@ -311,9 +311,6 @@ Partial Public Class Form1
                             Manga.ExportMangaToExcel(filePath, mangas)
                         Case ".docx"
                             Manga.ExportMangaToWord(filePath, mangas)
-                            'case ".pdf":
-                            '    ExportMangaToPdf(filePath);
-                            '    break;
                         Case ".txt"
                             Manga.ExportMangaToTxt(filePath, mangas)
                         Case Else
