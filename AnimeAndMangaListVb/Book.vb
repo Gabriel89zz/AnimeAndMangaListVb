@@ -1,48 +1,48 @@
 ﻿Friend Class Book
-    Protected volumeField As Integer
+    Protected _volume As Integer
 
     Public Property Volume As Integer
         Get
-            Return volumeField
+            Return _volume
         End Get
         Set(value As Integer)
-            volumeField = value
+            _volume = value
         End Set
     End Property
 
-    Protected editorialField As String
+    Protected _editorial As String
 
     Public Property Editorial As String
         Get
-            Return editorialField
+            Return _editorial
         End Get
         Set(value As String)
-            editorialField = value
+            _editorial = value
         End Set
     End Property
 
-    Protected priceField As Double
+    Protected _price As Double
 
     'PROPIEDAD DE SOLO ESCRITURA
     Public Property Price As Double
         Get
-            Return priceField
+            Return _price
         End Get
         Set(value As Double)
-            priceField = value
+            _price = value
         End Set
     End Property
 
     Public Sub New()
-        volumeField = 0
-        editorialField = ""
-        priceField = 0
+        _volume = 0
+        _editorial = ""
+        _price = 0
     End Sub
 
     Public Sub New(chaptersnumber As Integer, editorial As String, price As Double)
-        volumeField = chaptersnumber
-        editorialField = editorial
-        priceField = price
+        _volume = chaptersnumber
+        _editorial = editorial
+        _price = price
     End Sub
 
     'METODO QUE RECIBE Y REGRESA

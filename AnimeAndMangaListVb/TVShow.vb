@@ -1,44 +1,44 @@
 ﻿Friend Class TVShow
-    Protected productionstudioField As String
+    Protected _productionStudio As String
     Public Property ProductionStudio As String
         Get
-            Return productionstudioField
+            Return _productionStudio
         End Get
         Set(value As String)
-            productionstudioField = value
+            _productionStudio = value
         End Set
     End Property
 
-    Protected numberofseasonsField As Integer
+    Protected _numberofSeasons As Integer
     Public Property NumberOfSeasons As Integer
         Get
-            Return numberofseasonsField
+            Return _numberofSeasons
         End Get
         Set(value As Integer)
-            numberofseasonsField = value
+            _numberofSeasons = value
         End Set
     End Property
 
-    Protected platformField As String
+    Protected _platform As String
     Public Property Platform As String
         Get
-            Return platformField
+            Return _platform
         End Get
         Set(value As String)
-            platformField = value
+            _platform = value
         End Set
     End Property
 
     Public Sub New()
-        productionstudioField = ""
-        numberofseasonsField = 0
-        platformField = ""
+        _productionStudio = ""
+        _numberofSeasons = 0
+        _platform = ""
     End Sub
 
     Public Sub New(productionstudio As String, numberofseasons As Integer, platform As String)
-        productionstudioField = productionstudio
-        numberofseasonsField = numberofseasons
-        platformField = platform
+        _productionStudio = productionstudio
+        _numberofSeasons = numberofseasons
+        _platform = platform
     End Sub
 
     'METODO QUE RECIBE PERO NO REGRESA

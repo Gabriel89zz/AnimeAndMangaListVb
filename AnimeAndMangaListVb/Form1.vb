@@ -410,12 +410,6 @@ Partial Public Class Form1
 
                 mangas(emptyIndex) = New Manga(fields(0), fields(1), fields(2), Date.Parse(fields(3)), Convert.ToInt32(fields(4)), fields(5), Convert.ToInt32(fields(6)), Convert.ToDouble(fields(7)))
 
-
-
-
-
-
-
                 Dim item As ListViewItem = New ListViewItem(mangas(emptyIndex).Title)
                 item.SubItems.Add(mangas(emptyIndex).Author)
                 item.SubItems.Add(mangas(emptyIndex).Genre)
@@ -448,11 +442,6 @@ Partial Public Class Form1
                 End If
 
                 animeMatriz(row, column) = New Anime(fields(0), fields(1), fields(2), Date.Parse(fields(3)), Convert.ToInt32(fields(4)), fields(5), fields(6), Convert.ToInt32(fields(7)))
-
-
-
-
-
 
                 Dim item As ListViewItem = New ListViewItem(animeMatriz(row, column).Title)
                 item.SubItems.Add(animeMatriz(row, column).Author)

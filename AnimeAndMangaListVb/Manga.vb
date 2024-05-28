@@ -9,73 +9,73 @@ Imports System.IO
 Friend Class Manga
     Inherits Book
     Implements IJapaneseWorks
-    Private titleField As String
+    Private _title As String
     Public Property Title As String Implements IJapaneseWorks.Title
         Get
-            Return titleField
+            Return _title
         End Get
         Set(value As String)
-            titleField = value
+            _title = value
         End Set
     End Property
 
-    Private authorField As String
+    Private _author As String
     Public ReadOnly Property Author As String Implements IJapaneseWorks.Author
         Get
-            Return authorField
+            Return _author
         End Get
     End Property
 
-    Private genreField As String
+    Private _genre As String
     Public Property Genre As String Implements IJapaneseWorks.Genre
         Get
-            Return genreField
+            Return _genre
         End Get
         Set(value As String)
-            genreField = value
+            _genre = value
         End Set
     End Property
 
-    Private releaseyearField As Date
+    Private _releaseyear As Date
     Public ReadOnly Property ReleaseYear As Date Implements IJapaneseWorks.ReleaseYear
         Get
-            Return releaseyearField
+            Return _releaseyear
         End Get
     End Property
 
-    Private ratingField As Integer
+    Private _rating As Integer
     Public Property Rating As Integer Implements IJapaneseWorks.Rating
         Get
-            Return ratingField
+            Return _rating
         End Get
         Set(value As Integer)
-            ratingField = value
+            _rating = value
         End Set
     End Property
 
     'CONSTRUCTOR SIN PARAMETROS
     Public Sub New()
         MyBase.New()
-        titleField = ""
-        authorField = ""
-        genreField = ""
-        releaseyearField = Date.MinValue
-        ratingField = 0
+        _title = ""
+        _author = ""
+        _genre = ""
+        _releaseyear = Date.MinValue
+        _rating = 0
     End Sub
 
     'CONSTRUCTOR CON PARAMETROS
     Public Sub New(title As String, autor As String, genre As String, releaseyear As Date, chaptersnumber As Integer, editorial As String, rating As Integer, price As Double)
         MyBase.New(chaptersnumber, editorial, price)
-        titleField = title
-        authorField = autor
-        genreField = genre
-        releaseyearField = releaseyear
-        ratingField = rating
+        _title = title
+        _author = autor
+        _genre = genre
+        _releaseyear = releaseyear
+        _rating = rating
     End Sub
 
     'Polimorfimso
     Public Overrides Function ToString() As String
-        Return "Title: " & titleField & ", Author: " & authorField & ", Genre: " & genreField & ", Acquisition Date: " & releaseyearField.ToString().ToString() & ", Volume: " + Volume.ToString() & ", Editorial: " + Editorial.ToString() & ", Price: " + Price.ToString() & ", Rating:" + ratingField
+        Return "Title: " & _title & ", Author: " & _author & ", Genre: " & _genre & ", Acquisition Date: " & _releaseyear.ToString().ToString() & ", Volume: " + Volume.ToString() & ", Editorial: " + Editorial.ToString() & ", Price: " + Price.ToString() & ", Rating:" + _rating
     End Function
 
     ' METODO QUE REGRESA PERO NO RECIBE

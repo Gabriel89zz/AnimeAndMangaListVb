@@ -9,70 +9,70 @@ Imports System.IO
 Friend Class Anime
     Inherits TVShow
     Implements IJapaneseWorks
-    Private titleField As String
+    Private _title As String
     Public Property Title As String Implements IJapaneseWorks.Title
         Get
-            Return titleField
+            Return _title
         End Get
         Set(value As String)
-            titleField = value
+            _title = value
         End Set
     End Property
 
-    Private authorField As String
+    Private _author As String
     Public ReadOnly Property Author As String Implements IJapaneseWorks.Author
         Get
-            Return authorField
+            Return _author
         End Get
     End Property
 
-    Private genreField As String
+    Private _genre As String
     Public Property Genre As String Implements IJapaneseWorks.Genre
         Get
-            Return genreField
+            Return _genre
         End Get
         Set(value As String)
-            genreField = value
+            _genre = value
         End Set
     End Property
 
-    Private releaseyearField As Date
+    Private _releaseyear As Date
     Public ReadOnly Property ReleaseYear As Date Implements IJapaneseWorks.ReleaseYear
         Get
-            Return releaseyearField
+            Return _releaseyear
         End Get
     End Property
 
-    Private ratingField As Integer
+    Private _rating As Integer
     Public Property Rating As Integer Implements IJapaneseWorks.Rating
         Get
-            Return ratingField
+            Return _rating
         End Get
         Set(value As Integer)
-            ratingField = value
+            _rating = value
         End Set
     End Property
 
     Public Sub New()
         MyBase.New()
-        titleField = ""
-        authorField = ""
-        genreField = ""
-        releaseyearField = Date.MinValue
-        ratingField = 0
+        _title = ""
+        _author = ""
+        _genre = ""
+        _releaseyear = Date.MinValue
+        _rating = 0
     End Sub
 
     Public Sub New(title As String, autor As String, genre As String, releaseyear As Date, numberofseasons As Integer, production As String, platform As String, rating As Integer)
         MyBase.New(production, numberofseasons, platform)
-        titleField = title
-        authorField = autor
-        genreField = genre
-        releaseyearField = releaseyear
-        ratingField = rating
+        _title = title
+        _author = autor
+        _genre = genre
+        _releaseyear = releaseyear
+        _rating = rating
     End Sub
 
     Public Overrides Function ToString() As String
-        Return "Title: " & titleField & ", Author: " & authorField & ", Genre: " & genreField & ", Release Date: " & releaseyearField.ToString() & ", Number of Seasons: " & numberofseasons.ToString().ToString() & ", Production Studio: " + productionstudio.ToString() & ", Platform: " + platform.ToString() & ", Rating:" + ratingField
+        Return "Title: " & _title & ", Author: " & _author & ", Genre: " & _genre & ", Release Date: " & _releaseyear.ToString() & ", Number of Seasons: " & NumberOfSeasons.ToString().ToString() & ", Production Studio: " + ProductionStudio.ToString() & ", Platform: " + Platform.ToString() & ", Rating:" + _rating
     End Function
 
     Public Shared Sub ExportAnimeToJson(filePath As String, animeMatriz As Anime(,))
