@@ -322,7 +322,7 @@ Partial Public Class Form1
             End Using
         Else
             Using sfd As SaveFileDialog = New SaveFileDialog()
-                sfd.Filter = "JSON Files|*.json|XML Files|*.xml|Excel Files|*.xlsx|Word Files|*.docx|PDF Files|*.pdf|Text Files|*.txt"
+                sfd.Filter = "JSON Files|*.json|XML Files|*.xml|Excel Files|*.xlsx|Word Files|*.docx|Text Files|*.txt"
                 sfd.Title = "Save an Export File"
                 sfd.FileName = "ExportedData"
 
@@ -340,9 +340,6 @@ Partial Public Class Form1
                         Case ".docx"
                             Anime.ExportAnimeToWord(filePath, animeMatriz)
                         Case ".txt"
-                            'case ".pdf":
-                            '    ExportAnimeToPdf(filePath);
-                            '    break;
                             Anime.ExportAnimeToTxt(filePath, animeMatriz)
                         Case Else
                             MessageBox.Show("Unsupported file format selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])
